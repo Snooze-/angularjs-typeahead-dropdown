@@ -27,7 +27,7 @@ angular.module("typeaheadDropdown.tpl", [])
         .directive("typeaheadDropdown", function() {
             return {
                 templateUrl: "templates/typeaheadDropdown.tpl.html",
-                scope: { mdl: "=ngModel", options: "=",  config: "=?", events: "=", required: "=?ngRequired", disabled: "=?ngDisabled", onItemSelect: "&" },
+                scope: { mdl: "=ngModel", options: "=",  config: "=?", required: "=?ngRequired", disabled: "=?ngDisabled", onItemSelect: "&" },
                 require: "ngModel",
                 replace: true,
                 link: function($scope, $element, $attrs) {
