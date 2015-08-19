@@ -27,22 +27,22 @@ angular.module("typeaheadDropdown.tpl", [])
         .directive("typeaheadDropdown", function() {
             return {
                 templateUrl: "templates/typeaheadDropdown.tpl.html",
-                scope: { mdl: "=ngModel", options: "=",  config: "=?", events: "=", required: "=?ngRequired", disabled: "=?ngDisabled" },
+                scope: { mdl: "=ngModel", options: "=",  config: "=?", events: "=", required: "=?ngRequired", disabled: "=?ngDisabled", onItemSelect: "&" },
                 require: "ngModel",
                 replace: true,
                 link: function($scope, $element, $attrs) {
                     $scope.externalEvents = {
                         onItemSelect: angular.noop
                     };
-                    angular.extend($scope.externalEvents, $scope.events || []);
                 },
 
                 controller: ["$scope",
                     function (a) {
                         a.onSelect = function (i) {
                             a.mdl = i;
-                            if (a.events !== undefined) {
-                                a.events.onItemSelect(i);
+
+                            if (a.onItemSelect !== undefined) {
+                              a.onItemSelect(i);
                             }
                         }
                     }
